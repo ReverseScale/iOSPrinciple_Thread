@@ -46,13 +46,13 @@ Principle Thread
 
 *iOS 的多线程*
 
-第一种：pthread
+1）第一种：pthread
 
 特点：
-* （1）一套通用的多线程API
-* （2）适用于Unix\Linux\Windows等系统
-* （3）跨平台\可移植
-* （4）使用难度大
+* 一套通用的多线程API
+* 适用于Unix\Linux\Windows等系统
+* 跨平台\可移植
+* 使用难度大
 
 使用语言：c语言
 
@@ -62,11 +62,11 @@ Principle Thread
 
 
 
-第二种：NSThread
+2）第二种：NSThread
 
 特点：
-* （1）使用更加面向对象
-* （2）简单易用，可直接操作线程对象
+* 使用更加面向对象
+* 简单易用，可直接操作线程对象
 
 使用语言：OC语言
 
@@ -76,11 +76,11 @@ Principle Thread
 
 
 
-第三种：GCD
+3）第三种：GCD
 
 特点：
-* （1）旨在替代NSThread等线程技术
-* （2）充分利用设备的多核(自动)
+* 旨在替代NSThread等线程技术
+* 充分利用设备的多核(自动)
 
 使用语言：OC语言
 
@@ -90,12 +90,12 @@ Principle Thread
 
 
 
-第四种：NSOperation
+4）第四种：NSOperation
 
 特点：
-* （1）基于GCD（底层是GCD）
-* （2）比GCD多了一些更简单实用的功能
-* （3）使用更加面向对象
+* 基于GCD（底层是GCD）
+* 比GCD多了一些更简单实用的功能
+* 使用更加面向对象
 
 > - 在NSOperationQueue中，可以建立各个NSOperation之间的依赖关系
 - 有KVO，可以监测operation是否正在执行（isExecuted）、是否结束（isFinished），是否取消（isCanceld）
@@ -227,17 +227,176 @@ thread.threadPriority = 1.0;
 死锁：是指两个或两个以上的进程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用，它们都将无法推进下去。
 
 产生死锁的四个必要条件：
-* （1） 互斥条件：一个资源每次只能被一个进程使用。
-* （2） 占有且等待：一个进程因请求资源而阻塞时，对已获得的资源保持不放。
-* （3）不可强行占有:进程已获得的资源，在末使用完之前，不能强行剥夺。
-* （4） 循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。
+* 互斥条件：一个资源每次只能被一个进程使用。
+* 占有且等待：一个进程因请求资源而阻塞时，对已获得的资源保持不放。
+* 不可强行占有:进程已获得的资源，在末使用完之前，不能强行剥夺。
+* 循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。
 
 产生死锁的原因主要是：
-* （1）因为系统资源不足。
-* （2）进程运行推进的顺序不合适。
-* （3）资源分配不当等。
+* 因为系统资源不足。
+* 进程运行推进的顺序不合适。
+* 资源分配不当等。
 
-4）线程间通信
+4）NSThread 线程间通信（子线程加载图片完成通知主线程更新UI）
+```objc
+- (void)touchesBegan:(nonnull NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
+    //开启一条子线程来下载图片
+    [NSThread detachNewThreadSelector:@selector(downloadImage) toTarget:self withObject:nil];
+}
+- (void)downloadImage {
+    //1.确定要下载网络图片的url地址，一个url唯一对应着网络上的一个资源
+    NSURL *url = [NSURL URLWithString:@"http://p6.qhimg.com/t01d2954e2799c461ab.jpg"];
+
+    //2.根据url地址下载图片数据到本地（二进制数据
+    NSData *data = [NSData dataWithContentsOfURL:url];
+
+    //3.把下载到本地的二进制数据转换成图片
+    UIImage *image = [UIImage imageWithData:data];
+
+    //4.回到主线程刷新UI
+    //4.1 第一种方式
+    //    [self performSelectorOnMainThread:@selector(showImage:) withObject:image waitUntilDone:YES];
+
+    //4.2 第二种方式
+    //    [self.imageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:YES];
+
+    //4.3 第三种方式
+    [self.imageView performSelector:@selector(setImage:) onThread:[NSThread mainThread] withObject:image waitUntilDone:YES];
+}
+```
+
+5）特殊用法（计算代码段的执行时间）
+```objc
+NSURL *url = [NSURL URLWithString:@"http://p6.qhimg.com/t01d2954e2799c461ab.jpg"];
+
+//第一种方法
+NSDate *start = [NSDate date];
+//2.根据url地址下载图片数据到本地（二进制数据）
+NSData *data = [NSData dataWithContentsOfURL:url];
+
+NSDate *end = [NSDate date];
+NSLog(@"第二步操作花费的时间为%f",[end timeIntervalSinceDate:start]);
+
+
+//第二种方法
+CFTimeInterval start = CFAbsoluteTimeGetCurrent();
+NSData *data = [NSData dataWithContentsOfURL:url];
+
+CFTimeInterval end = CFAbsoluteTimeGetCurrent();
+NSLog(@"第二步操作花费的时间为%f",end - start);
+```
+
+#### 2.3 GCD 基本使用
+
+1）GCD 核心概念
+* 队列和任务
+* 同步函数和异步函数
+
+2）GCD 组合拳 🤣
+
+异步函数：
+* 异步函数+并发队列：开启多条线程，并发执行任务
+* 异步函数+串行队列：开启一条线程，串行执行任务
+
+同步函数：
+* 同步函数+并发队列：不开线程，串行执行任务
+* 同步函数+串行队列：不开线程，串行执行任务
+
+主队列：
+* 异步函数+主队列：不开线程，在主线程中串行执行任务
+* 同步函数+主队列：不开线程，串行执行任务（注意死锁发生）
+
+3）GCD 线程间通信
+```objc
+//0.获取一个全局的队列
+dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+//1.先开启一个线程，把下载图片的操作放在子线程中处理
+dispatch_async(queue, ^{
+    //2.下载图片
+    NSURL *url = [NSURL URLWithString:@"http://h.hiphotos.baidu.com/zhidao/pic/item/6a63f6246b600c3320b14bb3184c510fd8f9a185.jpg"];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:data];
+
+    NSLog(@"下载操作所在的线程--%@",[NSThread currentThread]);
+
+    //3.回到主线程刷新UI
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.imageView.image = image;
+        //打印查看当前线程
+        NSLog(@"刷新UI---%@",[NSThread currentThread]);
+    });
+});
+```
+
+4）GCD 常用小功能
+
+栅栏函数（控制任务的执行顺序）
+```objc
+dispatch_barrier_async(queue, ^{
+    NSLog(@"--dispatch_barrier_async-");
+});
+```
+
+延迟执行（延迟·控制在哪个线程执行）
+```objc
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_global_  queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    NSLog(@"---%@",[NSThread currentThread]);
+});
+```
+
+一次性代码（注意不能放到懒加载）
+```objc
+- (void)once {
+    //整个程序运行过程中只会执行一次
+    //onceToken用来记录该部分的代码是否被执行过
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSLog(@"-----");
+    });
+}
+```
+
+快速迭代（开多个线程并发完成迭代操作）
+```objc
+dispatch_apply(subpaths.count, queue, ^(size_t index) {
+});
+```
+
+队列组（同栅栏函数）
+```objc
+//创建队列组
+dispatch_group_t group = dispatch_group_create();
+dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
+
+dispatch_group_enter(group);
+//模拟多线程耗时操作
+dispatch_group_async(group, globalQueue, ^{
+    sleep(3);
+    NSLog(@"%@---block1结束。。。",[NSThread currentThread]);
+    dispatch_group_leave(group);
+});
+NSLog(@"%@---1结束。。。",[NSThread currentThread]);
+
+dispatch_group_enter(group);
+//模拟多线程耗时操作
+dispatch_group_async(group, globalQueue, ^{
+    sleep(3);
+    NSLog(@"%@---block2结束。。。",[NSThread currentThread]);
+    dispatch_group_leave(group);
+});
+NSLog(@"%@---2结束。。。",[NSThread currentThread]);
+
+dispatch_group_notify(group, globalQueue, ^{
+    NSLog(@"%@---全部结束。。。",[NSThread currentThread]);
+});
+```
+
+
+
+
+
+
+
 
 
 

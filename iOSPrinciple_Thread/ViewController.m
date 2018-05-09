@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "PthreadViewController.h"
 #import "NSThreadAndLoadingViewController.h"
+#import "GCDViewController.h"
 @interface ViewController ()
 
 @end
@@ -27,7 +28,10 @@
     NSThreadAndLoadingViewController *vc = [NSThreadAndLoadingViewController new];
     [self.navigationController pushViewController:vc animated:YES];
 }
-
+- (IBAction)gcdAction:(id)sender {
+    GCDViewController *vc = [GCDViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
