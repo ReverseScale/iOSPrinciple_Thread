@@ -13,6 +13,11 @@
 #import "GCDTestsViewController.h"
 #import "GCDImagesFinishedViewController.h"
 #import "NSThreadSafeViewController.h"
+#import "NSOperationViewController.h"
+#import "NSOperationQueueViewController.h"
+#import "NSOperationUnSafeViewController.h"
+#import "NSOperationSafeViewController.h"
+
 @interface ViewController ()
 
 @end
@@ -47,7 +52,24 @@
     NSThreadSafeViewController *vc = [NSThreadSafeViewController new];
     [self.navigationController pushViewController:vc animated:YES];
 }
+- (IBAction)nsOperationAction:(id)sender {
+    NSOperationViewController *vc = [NSOperationViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (IBAction)nsOperationQueueAction:(id)sender {
+    NSOperationQueueViewController *vc = [NSOperationQueueViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
+- (IBAction)nsSafeOperationQueueAction:(id)sender {
+    // Unsafe
+//    NSOperationUnSafeViewController *vc = [NSOperationUnSafeViewController new];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    // Safe
+    NSOperationSafeViewController *vc = [NSOperationSafeViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

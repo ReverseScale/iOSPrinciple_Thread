@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3495152C20A2D30C00E9AE2C /* NSOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3495152B20A2D30C00E9AE2C /* NSOperationViewController.m */; };
+		3495152F20A2D5C200E9AE2C /* CustomOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3495152E20A2D5C200E9AE2C /* CustomOperation.m */; };
+		3495153220A2DDC500E9AE2C /* NSOperationQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3495153120A2DDC500E9AE2C /* NSOperationQueueViewController.m */; };
+		3495153520A2E8B600E9AE2C /* NSOperationSafeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3495153420A2E8B600E9AE2C /* NSOperationSafeViewController.m */; };
+		3495153820A2E8D300E9AE2C /* NSOperationUnSafeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3495153720A2E8D300E9AE2C /* NSOperationUnSafeViewController.m */; };
 		34964BE220A28C6C00642082 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34964BE120A28C6C00642082 /* AppDelegate.m */; };
 		34964BE520A28C6C00642082 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34964BE420A28C6C00642082 /* ViewController.m */; };
 		34964BE820A28C6C00642082 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34964BE620A28C6C00642082 /* Main.storyboard */; };
@@ -44,6 +49,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3495152A20A2D30C00E9AE2C /* NSOperationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSOperationViewController.h; sourceTree = "<group>"; };
+		3495152B20A2D30C00E9AE2C /* NSOperationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSOperationViewController.m; sourceTree = "<group>"; };
+		3495152D20A2D5C200E9AE2C /* CustomOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomOperation.h; sourceTree = "<group>"; };
+		3495152E20A2D5C200E9AE2C /* CustomOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomOperation.m; sourceTree = "<group>"; };
+		3495153020A2DDC500E9AE2C /* NSOperationQueueViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSOperationQueueViewController.h; sourceTree = "<group>"; };
+		3495153120A2DDC500E9AE2C /* NSOperationQueueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSOperationQueueViewController.m; sourceTree = "<group>"; };
+		3495153320A2E8B600E9AE2C /* NSOperationSafeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSOperationSafeViewController.h; sourceTree = "<group>"; };
+		3495153420A2E8B600E9AE2C /* NSOperationSafeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSOperationSafeViewController.m; sourceTree = "<group>"; };
+		3495153620A2E8D300E9AE2C /* NSOperationUnSafeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSOperationUnSafeViewController.h; sourceTree = "<group>"; };
+		3495153720A2E8D300E9AE2C /* NSOperationUnSafeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSOperationUnSafeViewController.m; sourceTree = "<group>"; };
 		34964BDD20A28C6C00642082 /* iOSPrinciple_Thread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSPrinciple_Thread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34964BE020A28C6C00642082 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		34964BE120A28C6C00642082 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -145,6 +160,16 @@
 				34964C2D20A2C8D900642082 /* GCDImagesFinishedViewController.xib */,
 				34964C3020A2CB6A00642082 /* NSThreadSafeViewController.h */,
 				34964C3120A2CB6A00642082 /* NSThreadSafeViewController.m */,
+				3495152A20A2D30C00E9AE2C /* NSOperationViewController.h */,
+				3495152B20A2D30C00E9AE2C /* NSOperationViewController.m */,
+				3495152D20A2D5C200E9AE2C /* CustomOperation.h */,
+				3495152E20A2D5C200E9AE2C /* CustomOperation.m */,
+				3495153020A2DDC500E9AE2C /* NSOperationQueueViewController.h */,
+				3495153120A2DDC500E9AE2C /* NSOperationQueueViewController.m */,
+				3495153620A2E8D300E9AE2C /* NSOperationUnSafeViewController.h */,
+				3495153720A2E8D300E9AE2C /* NSOperationUnSafeViewController.m */,
+				3495153320A2E8B600E9AE2C /* NSOperationSafeViewController.h */,
+				3495153420A2E8B600E9AE2C /* NSOperationSafeViewController.m */,
 				34964BE920A28C7500642082 /* Assets.xcassets */,
 				34964BEB20A28C7500642082 /* LaunchScreen.storyboard */,
 				34964BEE20A28C7500642082 /* Info.plist */,
@@ -305,14 +330,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				34964BE520A28C6C00642082 /* ViewController.m in Sources */,
+				3495152C20A2D30C00E9AE2C /* NSOperationViewController.m in Sources */,
 				34964C3220A2CB6A00642082 /* NSThreadSafeViewController.m in Sources */,
+				3495152F20A2D5C200E9AE2C /* CustomOperation.m in Sources */,
 				34964C2720A2C70700642082 /* GCDTestsViewController.m in Sources */,
 				34964C2320A2A42600642082 /* GCDViewController.m in Sources */,
+				3495153220A2DDC500E9AE2C /* NSOperationQueueViewController.m in Sources */,
 				34964C1420A2957E00642082 /* PthreadViewController.m in Sources */,
+				3495153520A2E8B600E9AE2C /* NSOperationSafeViewController.m in Sources */,
 				34964C1B20A29F0800642082 /* NSThreadAndLoadingViewController.m in Sources */,
 				34964C2E20A2C8D900642082 /* GCDImagesFinishedViewController.m in Sources */,
 				34964BF020A28C7500642082 /* main.m in Sources */,
 				34964BE220A28C6C00642082 /* AppDelegate.m in Sources */,
+				3495153820A2E8D300E9AE2C /* NSOperationUnSafeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
