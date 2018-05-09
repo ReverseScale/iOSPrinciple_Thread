@@ -15,6 +15,9 @@
 		34964BF020A28C7500642082 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34964BEF20A28C7500642082 /* main.m */; };
 		34964BFA20A28C7600642082 /* iOSPrinciple_ThreadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34964BF920A28C7600642082 /* iOSPrinciple_ThreadTests.m */; };
 		34964C0520A28C7600642082 /* iOSPrinciple_ThreadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34964C0420A28C7600642082 /* iOSPrinciple_ThreadUITests.m */; };
+		34964C1420A2957E00642082 /* PthreadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34964C1320A2957E00642082 /* PthreadViewController.m */; };
+		34964C1B20A29F0800642082 /* NSThreadAndLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34964C1920A29F0800642082 /* NSThreadAndLoadingViewController.m */; };
+		34964C1C20A29F0800642082 /* NSThreadAndLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34964C1A20A29F0800642082 /* NSThreadAndLoadingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,11 @@
 		34964C0020A28C7600642082 /* iOSPrinciple_ThreadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSPrinciple_ThreadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34964C0420A28C7600642082 /* iOSPrinciple_ThreadUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSPrinciple_ThreadUITests.m; sourceTree = "<group>"; };
 		34964C0620A28C7600642082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34964C1220A2957E00642082 /* PthreadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PthreadViewController.h; sourceTree = "<group>"; };
+		34964C1320A2957E00642082 /* PthreadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PthreadViewController.m; sourceTree = "<group>"; };
+		34964C1820A29F0800642082 /* NSThreadAndLoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSThreadAndLoadingViewController.h; sourceTree = "<group>"; };
+		34964C1920A29F0800642082 /* NSThreadAndLoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSThreadAndLoadingViewController.m; sourceTree = "<group>"; };
+		34964C1A20A29F0800642082 /* NSThreadAndLoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NSThreadAndLoadingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,11 @@
 				34964BE320A28C6C00642082 /* ViewController.h */,
 				34964BE420A28C6C00642082 /* ViewController.m */,
 				34964BE620A28C6C00642082 /* Main.storyboard */,
+				34964C1220A2957E00642082 /* PthreadViewController.h */,
+				34964C1320A2957E00642082 /* PthreadViewController.m */,
+				34964C1820A29F0800642082 /* NSThreadAndLoadingViewController.h */,
+				34964C1920A29F0800642082 /* NSThreadAndLoadingViewController.m */,
+				34964C1A20A29F0800642082 /* NSThreadAndLoadingViewController.xib */,
 				34964BE920A28C7500642082 /* Assets.xcassets */,
 				34964BEB20A28C7500642082 /* LaunchScreen.storyboard */,
 				34964BEE20A28C7500642082 /* Info.plist */,
@@ -237,6 +250,7 @@
 			files = (
 				34964BED20A28C7500642082 /* LaunchScreen.storyboard in Resources */,
 				34964BEA20A28C7500642082 /* Assets.xcassets in Resources */,
+				34964C1C20A29F0800642082 /* NSThreadAndLoadingViewController.xib in Resources */,
 				34964BE820A28C6C00642082 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +277,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				34964BE520A28C6C00642082 /* ViewController.m in Sources */,
+				34964C1420A2957E00642082 /* PthreadViewController.m in Sources */,
+				34964C1B20A29F0800642082 /* NSThreadAndLoadingViewController.m in Sources */,
 				34964BF020A28C7500642082 /* main.m in Sources */,
 				34964BE220A28C6C00642082 /* AppDelegate.m in Sources */,
 			);

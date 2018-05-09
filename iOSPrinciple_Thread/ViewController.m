@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-
+#import "PthreadViewController.h"
+#import "NSThreadAndLoadingViewController.h"
 @interface ViewController ()
 
 @end
@@ -17,6 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+- (IBAction)pthreadAction:(id)sender {
+    PthreadViewController *vc = [PthreadViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (IBAction)nsthreadAction:(id)sender {
+    NSThreadAndLoadingViewController *vc = [NSThreadAndLoadingViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
