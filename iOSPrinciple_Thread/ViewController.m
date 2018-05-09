@@ -10,6 +10,9 @@
 #import "PthreadViewController.h"
 #import "NSThreadAndLoadingViewController.h"
 #import "GCDViewController.h"
+#import "GCDTestsViewController.h"
+#import "GCDImagesFinishedViewController.h"
+#import "NSThreadSafeViewController.h"
 @interface ViewController ()
 
 @end
@@ -32,6 +35,19 @@
     GCDViewController *vc = [GCDViewController new];
     [self.navigationController pushViewController:vc animated:YES];
 }
+- (IBAction)gcdtestAction:(id)sender {
+    GCDTestsViewController *vc = [GCDTestsViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (IBAction)gcdimagefinishedAction:(id)sender {
+    GCDImagesFinishedViewController *vc = [GCDImagesFinishedViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (IBAction)nsthreadTicketAction:(id)sender {
+    NSThreadSafeViewController *vc = [NSThreadSafeViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

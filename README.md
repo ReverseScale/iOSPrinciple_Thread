@@ -237,6 +237,65 @@ thread.threadPriority = 1.0;
 * 进程运行推进的顺序不合适。
 * 资源分配不当等。
 
+售票员售票问题
+```objc
+@interface NSThreadSafeViewController ()
+//三只售票员🐱🐶🐭
+@property (nonatomic, strong) NSThread *thread01;
+@property (nonatomic, strong) NSThread *thread02;
+@property (nonatomic, strong) NSThread *thread03;
+//总票数
+@property(nonatomic, assign) NSInteger totalticket;
+@end
+
+@implementation NSThreadSafeViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    //假设有10张票
+    self.totalticket = 10;
+
+    //创建线程
+    self.thread01 =  [[NSThread alloc]initWithTarget:self selector:@selector(saleTicket) object:nil];
+    self.thread01.name = @"小🐱";
+
+    self.thread02 =  [[NSThread alloc]initWithTarget:self selector:@selector(saleTicket) object:nil];
+    self.thread02.name = @"小🐶";
+
+    self.thread03 =  [[NSThread alloc]initWithTarget:self selector:@selector(saleTicket) object:nil];
+    self.thread03.name = @"小🐭";
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    //启动线程
+    [self.thread01 start];
+    [self.thread02 start];
+    [self.thread03 start];
+}
+//售票
+- (void)saleTicket {
+    while (1) {
+        //2.加互斥锁
+        @synchronized(self) {
+            [NSThread sleepForTimeInterval:0.03];
+            //1.先查看余票数量
+            NSInteger count = self.totalticket;
+            if (count > 0) {
+                self.totalticket = count - 1;
+                NSLog(@"%@卖出去了一张票,还剩下%zd张票",[NSThread currentThread].name,self.totalticket);
+            } else {
+                NSLog(@"%@发现当前票已经买完了--",[NSThread currentThread].name);
+                break;
+            }
+        }
+    }
+}
+```
+
+运行结果：
+
+![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/56476833.jpg)
+
 4）NSThread 线程间通信（子线程加载图片完成通知主线程更新UI）
 ```objc
 - (void)touchesBegan:(nonnull NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {

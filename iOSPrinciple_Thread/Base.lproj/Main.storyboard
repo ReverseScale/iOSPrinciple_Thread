@@ -34,38 +34,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZZ-sp-RCI">
-                                <rect key="frame" x="160" y="156" width="54" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZZ-sp-RCI">
+                                <rect key="frame" x="160" y="183.5" width="54" height="30"/>
                                 <state key="normal" title="pthread"/>
                                 <connections>
                                     <action selector="pthreadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kdW-Gb-UYM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6o-Mf-8gb">
-                                <rect key="frame" x="157" y="227" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6o-Mf-8gb">
+                                <rect key="frame" x="153" y="228.5" width="69" height="30"/>
                                 <state key="normal" title="NSThread"/>
                                 <connections>
                                     <action selector="nsthreadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a0v-Fz-gKx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yU4-fo-CrT">
-                                <rect key="frame" x="171" y="284" width="33" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yU4-fo-CrT">
+                                <rect key="frame" x="171" y="273.5" width="33" height="30"/>
                                 <state key="normal" title="GCD"/>
                                 <connections>
                                     <action selector="gcdAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gTd-3D-QSH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7e-uH-gRn">
+                                <rect key="frame" x="154" y="318.5" width="66" height="30"/>
+                                <state key="normal" title="GCD Test"/>
+                                <connections>
+                                    <action selector="gcdtestAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hYQ-PO-hHs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooF-1Q-Kh9">
+                                <rect key="frame" x="120" y="363.5" width="136" height="30"/>
+                                <state key="normal" title="GCD image finished"/>
+                                <connections>
+                                    <action selector="gcdimagefinishedAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jlO-bl-nkF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S0-8o-Wqy">
+                                <rect key="frame" x="143" y="408.5" width="89" height="30"/>
+                                <state key="normal" title="Ticket things"/>
+                                <connections>
+                                    <action selector="nsthreadTicketAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uuB-UH-9Z0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3S0-8o-Wqy" firstAttribute="top" secondItem="ooF-1Q-Kh9" secondAttribute="bottom" constant="15" id="0G2-Di-R87"/>
+                            <constraint firstItem="3S0-8o-Wqy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3fa-Cp-B33"/>
+                            <constraint firstItem="yU4-fo-CrT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4d8-oM-74E"/>
+                            <constraint firstItem="c7e-uH-gRn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="87G-z4-7iN"/>
+                            <constraint firstItem="N6o-Mf-8gb" firstAttribute="top" secondItem="bZZ-sp-RCI" secondAttribute="bottom" constant="15" id="HN0-xD-IKg"/>
+                            <constraint firstItem="bZZ-sp-RCI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R6f-3X-c7u"/>
+                            <constraint firstItem="yU4-fo-CrT" firstAttribute="top" secondItem="N6o-Mf-8gb" secondAttribute="bottom" constant="15" id="Sbc-iF-W7q"/>
+                            <constraint firstItem="c7e-uH-gRn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UaT-SD-cY0"/>
+                            <constraint firstItem="N6o-Mf-8gb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aKq-4S-Y2U"/>
+                            <constraint firstItem="ooF-1Q-Kh9" firstAttribute="top" secondItem="c7e-uH-gRn" secondAttribute="bottom" constant="15" id="b6x-zf-DnZ"/>
+                            <constraint firstItem="c7e-uH-gRn" firstAttribute="top" secondItem="yU4-fo-CrT" secondAttribute="bottom" constant="15" id="jbb-TI-M9p"/>
+                            <constraint firstItem="ooF-1Q-Kh9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lv3-KZ-4bI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Thread" id="Duc-el-bzd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="442" y="72"/>
         </scene>
     </scenes>
 </document>
