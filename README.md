@@ -292,9 +292,9 @@ thread.threadPriority = 1.0;
 }
 ```
 
-运行结果：
+运行结果
 
-![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/56476833.jpg)
+![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/94336920.jpg)
 
 4）NSThread 线程间通信（子线程加载图片完成通知主线程更新UI）
 ```objc
@@ -563,6 +563,7 @@ NSOperation 是个抽象类，不能用来封装操作。我们只有使用它�
 }
 ```
 运行结果
+
 ![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/74021816.jpg)
 
 > 注意：和上边 NSInvocationOperation 使用一样。因为代码是在主线程中调用的，所以打印结果为主线程。如果在其他线程中执行操作，则打印结果为其他线程。
@@ -634,6 +635,7 @@ NSOperation 是个抽象类，不能用来封装操作。我们只有使用它�
 }
 ```
 运行结果
+
 ![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/99595101.jpg)
 
 > 可以看出：使用子类 NSBlockOperation，并调用方法 AddExecutionBlock: 的情况下，blockOperationWithBlock:方法中的操作 和 addExecutionBlock: 中的操作是在不同的线程中异步执行的。而且，这次执行结果中 blockOperationWithBlock:方法中的操作也不是在当前线程（主线程）中执行的。从而印证了blockOperationWithBlock: 中的操作也可能会在其他线程（非当前线程）中执行。
@@ -749,6 +751,7 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 }
 ```
 运行结果
+
 ![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/5618786.jpg)
 
 > 可以看出：使用 NSOperation 子类创建操作，并使用 addOperation: 将操作加入到操作队列后能够开启新线程，进行并发执行。
@@ -786,6 +789,7 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 ```
 
 运行结果
+
 ![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/34220012.jpg)
 
 > 可以看出：使用 addOperationWithBlock: 将操作加入到操作队列后能够开启新线程，进行并发执行。
@@ -844,9 +848,11 @@ maxConcurrentOperationCount 最大并发操作数：
 }
 ```
 maxConcurrentOperationCount 设置为 1，运行结果
+
 ![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/98901445.jpg)
 
 maxConcurrentOperationCount 设置为 2，运行结果
+
 ![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/6502164.jpg)
 
 > 可以看出：当最大并发操作数为1时，操作是按顺序串行执行的，并且一个操作完成之后，下一个操作才开始执行。当最大操作并发数为2时，操作是并发执行的，可以同时执行两个操作。而开启线程数量是由系统决定的，不需要我们来管理。
@@ -896,6 +902,7 @@ NSOperation、NSOperationQueue 最吸引人的地方是它能添加操作之间�
 }
 ```
 运行结果
+
 ![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/775885.jpg)
 
 > 可以看到：通过添加操作依赖，无论运行几次，其结果都是 op1 先执行，op2 后执行。
@@ -965,6 +972,7 @@ queuePriority 属性决定了进入准备就绪状态下的操作之间的开始
 }
 ```
 运行结果
+
 ![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/6812561.jpg)
 
 9）NSOperation、NSOperationQueue 线程同步和线程安全
@@ -1035,6 +1043,7 @@ queuePriority 属性决定了进入准备就绪状态下的操作之间的开始
 }
 ```
 运行结果
+
 ![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/45814655.jpg)
 
 > 可以看到：在不考虑线程安全，不使用 NSLock 情况下，在0票后依然出票，数据混乱，这样显然不符合我们的需求，所以我们需要考虑线程安全问题。
@@ -1106,6 +1115,7 @@ NSLock 对象可以通过进入锁时调用 lock 方法，解锁时调用 unlock
 }
 ```
 运行结果
+
 ![](http://og1yl0w9z.bkt.clouddn.com/18-5-9/81171071.jpg)
 
 > 可以看出：在考虑了线程安全，使用 NSLock 加锁、解锁机制的情况下，得到的票数是正确的，没有出现混乱的情况。我们也就解决了多个线程同步的问题。
