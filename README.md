@@ -97,9 +97,10 @@ Principle Thread
 * 比GCD多了一些更简单实用的功能
 * 使用更加面向对象
 
-> 在NSOperationQueue中，可以建立各个NSOperation之间的依赖关系
-有KVO，可以监测operation是否正在执行（isExecuted）、是否结束（isFinished），是否取消（isCanceld）
-NSOperationQueue可以方便的管理并发、NSOperation之间的优先级
+对比 GCD 的优点：
+* 在NSOperationQueue中，可以建立各个NSOperation之间的依赖关系
+* 有KVO，可以监测operation是否正在执行（isExecuted）、是否结束（isFinished），是否取消（isCanceld）
+* NSOperationQueue可以方便的管理并发、NSOperation之间的优先级
 
 使用语言：OC语言
 
